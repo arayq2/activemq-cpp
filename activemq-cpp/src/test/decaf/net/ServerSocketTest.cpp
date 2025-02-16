@@ -37,7 +37,7 @@ namespace {
         std::auto_ptr<Socket> clientS;
         int port;
 
-        SocketClient(int port) : Runnable(), clientS(NULL), port(port) {
+        SocketClient(int port) : Runnable(), clientS(), port(port) {
         }
 
         virtual void run() {

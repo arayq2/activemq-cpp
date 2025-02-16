@@ -171,7 +171,7 @@ namespace {
 
     public:
 
-        TestCloseCancelsHungStartRunnable() : connection(NULL) {
+        TestCloseCancelsHungStartRunnable() : connection() {
         }
 
         virtual ~TestCloseCancelsHungStartRunnable() {
