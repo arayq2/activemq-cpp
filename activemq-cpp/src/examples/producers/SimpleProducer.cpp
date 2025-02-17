@@ -90,7 +90,7 @@ public:
         try {
 
             // Create a ConnectionFactory
-            auto_ptr<ActiveMQConnectionFactory> connectionFactory(
+            unique_ptr<ActiveMQConnectionFactory> connectionFactory(
                 new ActiveMQConnectionFactory( brokerURI ) );
 
             // Create a Connection
