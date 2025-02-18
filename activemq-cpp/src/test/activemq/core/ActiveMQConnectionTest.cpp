@@ -110,7 +110,7 @@ namespace core {
 
         virtual ~MyDispatcher() {}
 
-        virtual void dispatch(const decaf::lang::Pointer<commands::MessageDispatch>& data) throw (exceptions::ActiveMQException) {
+        virtual void dispatch(const decaf::lang::Pointer<commands::MessageDispatch>& data) {
             messages.push_back(data->getMessage());
         }
 

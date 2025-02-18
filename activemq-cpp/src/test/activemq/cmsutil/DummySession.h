@@ -66,11 +66,11 @@ namespace cmsutil {
             return new DummyConsumer(messageContext, destination, "", false);
         }
 
-        virtual cms::MessageConsumer* createConsumer(const cms::Destination* destination, const std::string& selector) throw (cms::CMSException) {
+        virtual cms::MessageConsumer* createConsumer(const cms::Destination* destination, const std::string& selector) {
             return new DummyConsumer(messageContext, destination, selector, false);
         }
 
-        virtual cms::MessageConsumer* createConsumer(const cms::Destination* destination, const std::string& selector, bool noLocal) throw (cms::CMSException) {
+        virtual cms::MessageConsumer* createConsumer(const cms::Destination* destination, const std::string& selector, bool noLocal) {
             return new DummyConsumer(messageContext, destination, selector, noLocal);
         }
 
@@ -118,19 +118,19 @@ namespace cmsutil {
             return NULL;
         }
 
-        virtual cms::StreamMessage* createStreamMessage() throw (cms::CMSException) {
+        virtual cms::StreamMessage* createStreamMessage() {
             return NULL;
         }
 
-        virtual cms::TextMessage* createTextMessage() throw (cms::CMSException) {
+        virtual cms::TextMessage* createTextMessage() {
             return NULL;
         }
 
-        virtual cms::TextMessage* createTextMessage(const std::string& text) throw (cms::CMSException) {
+        virtual cms::TextMessage* createTextMessage(const std::string& text) {
             return NULL;
         }
 
-        virtual cms::MapMessage* createMapMessage() throw (cms::CMSException) {
+        virtual cms::MapMessage* createMapMessage() {
             return NULL;
         }
 
