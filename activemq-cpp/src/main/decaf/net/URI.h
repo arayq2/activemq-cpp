@@ -63,7 +63,7 @@ namespace net {
          *
          * @throws URISyntaxException if the URI passed is malformed.
          */
-        URI(const URI& uri);
+        URI(const URI& uri) = default;
 
         /**
          * Constructs a URI from the given string.

@@ -364,7 +364,7 @@ void DeflaterTest::testReset() {
                 infl.inflate( outPutInf );
             }
             infl.end();
-        } catch( DataFormatException e ) {
+        } catch( DataFormatException& e ) {
             CPPUNIT_FAIL( std::string( "Test " ) + Integer::toString( i ) +
                           ": Invalid input to be decompressed" );
         }
@@ -524,7 +524,7 @@ void DeflaterTest::testSetInputVector() {
         while( !infl.finished() ) {
             infl.inflate( outPutInf );
         }
-    } catch( DataFormatException e ) {
+    } catch( DataFormatException& e ) {
         CPPUNIT_FAIL("Invalid input to be decompressed");
     }
 
@@ -822,7 +822,7 @@ void DeflaterTest::testConstructorIB() {
                 }
                 infl.inflate( outPutInf );
             }
-        } catch( DataFormatException e ) {
+        } catch( DataFormatException& e ) {
             r = 1;
         }
         CPPUNIT_ASSERT_EQUAL_MESSAGE( "header option did not correspond", 1, (int)r );

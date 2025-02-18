@@ -148,7 +148,7 @@ void SocketTest::testGetKeepAlive() {
         CPPUNIT_ASSERT_MESSAGE( "getKeepAlive true when it should be False",
                                 !client.getKeepAlive() );
 
-    } catch (Exception e) {
+    } catch (Exception& e) {
         CPPUNIT_FAIL( "Error during test of Get SO_KEEPALIVE" );
     }
 }
@@ -183,7 +183,7 @@ void SocketTest::testGetSoLinger() {
         CPPUNIT_ASSERT_MESSAGE( "getSoLinger returned incorrect value",
                                 -1 == client.getSoLinger() );
 
-    } catch (Exception e) {
+    } catch (Exception& e) {
         CPPUNIT_FAIL( "Error during test of Get SO_LINGER" );
     }
 }

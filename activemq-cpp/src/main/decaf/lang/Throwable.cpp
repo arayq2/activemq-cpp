@@ -25,5 +25,5 @@ Throwable::Throwable() : std::exception() {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-Throwable::~Throwable() throw() {
-}
+//Throwable::~Throwable() throw() {
+//}

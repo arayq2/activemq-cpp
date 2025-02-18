@@ -43,7 +43,7 @@ namespace io {
          * Copy Constructor
          * @param ex the exception to copy, which is an instance of this type
          */
-        IOException(const IOException& ex);
+        IOException(const IOException& ex) = default;
 
         /**
          * Constructor - Initializes the file name and line number where

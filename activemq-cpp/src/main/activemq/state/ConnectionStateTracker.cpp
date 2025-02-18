@@ -537,7 +537,7 @@ Pointer<Command> ConnectionStateTracker::processRemoveConsumer(ConsumerId* id) {
                     }
                     try {
                         cs->getRecoveringPullConsumers().remove(consumerId);
-                    } catch (NoSuchElementException e) {}
+                    } catch (NoSuchElementException& e) {}
                 }
             }
         }

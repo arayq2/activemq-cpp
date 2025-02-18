@@ -637,7 +637,7 @@ void TimerTest::testSchedule_TimerTask_Long() {
     exception = false;
     try {
         t->schedule( testTask, -100 );
-    } catch( IllegalArgumentException e ) {
+    } catch( IllegalArgumentException& e ) {
         exception = true;
         // unscheduled tasks must be deleted
         delete testTask;
@@ -651,7 +651,7 @@ void TimerTest::testSchedule_TimerTask_Long() {
     exception = false;
     try {
         t->schedule( NULL, 10 );
-    } catch( NullPointerException e ) {
+    } catch( NullPointerException& e ) {
         exception = true;
     }
     CPPUNIT_ASSERT_MESSAGE( "Scheduling a null task should throw NullPointerException",
@@ -746,7 +746,7 @@ void TimerTest::testSchedule_TimerTask_Long2() {
     exception = false;
     try {
         t->schedule( testTask, -100 );
-    } catch( IllegalArgumentException e ) {
+    } catch( IllegalArgumentException& e ) {
         exception = true;
     }
     CPPUNIT_ASSERT_MESSAGE( "Scheduling a task with negative delay should throw IllegalArgumentException",
@@ -758,7 +758,7 @@ void TimerTest::testSchedule_TimerTask_Long2() {
     exception = false;
     try {
         t->schedule( NULL, 10 );
-    } catch( NullPointerException e ) {
+    } catch( NullPointerException& e ) {
         exception = true;
     }
     CPPUNIT_ASSERT_MESSAGE( "Scheduling a null task should throw NullPointerException",

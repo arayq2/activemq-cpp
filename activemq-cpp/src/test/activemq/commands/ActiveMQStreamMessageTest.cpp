@@ -671,7 +671,7 @@ void ActiveMQStreamMessageTest::testReadBigString() {
         std::string bigString;
         bigString.reserve( 1024 * 1024 );
         for( int i = 0; i < 1024 * 1024; i++ ) {
-            bigString.append( 1, (char)'a' + i % 26 );
+            bigString.append( 1, (char)('a' + i % 26) );
         }
 
         msg.writeString( bigString );

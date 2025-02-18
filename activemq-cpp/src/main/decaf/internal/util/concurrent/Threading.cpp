@@ -169,7 +169,7 @@ namespace {
     void unblockThreads(ThreadHandle* queueHead);
     void enqueueThread(ThreadHandle** queue, ThreadHandle* thread);
     void dequeueThread(ThreadHandle** queue, ThreadHandle* thread);
-    unsigned int getNumberOfWaiters(MonitorHandle* monitor);
+    //unsigned int getNumberOfWaiters(MonitorHandle* monitor);
     void purgeMonitorsPool(MonitorPool* pool);
     MonitorHandle* batchAllocateMonitors();
     void doMonitorExit(MonitorHandle* monitor, ThreadHandle* thread);
@@ -527,6 +527,7 @@ namespace {
         }
     }
 
+#if 0 // unused function: avoid compiler warning
     unsigned int getNumberOfWaiters(MonitorHandle* monitor) {
 
         unsigned int numWaiting = 0;
@@ -544,6 +545,7 @@ namespace {
 
         return numWaiting;
     }
+#endif
 
     void purgeMonitorsPool(MonitorPool* pool) {
 

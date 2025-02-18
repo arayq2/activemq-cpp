@@ -43,7 +43,7 @@ namespace {
         CPPUNIT_ASSERT( !list.isEmpty());
         CPPUNIT_ASSERT_EQUAL( n, list.size() );
     }
-
+#if 0 // unused functions, avoid compiler warning
     void populate( LinkedList<std::string>& list, int n ) {
 
         CPPUNIT_ASSERT( list.isEmpty() );
@@ -67,6 +67,7 @@ namespace {
         CPPUNIT_ASSERT( !list.empty());
         CPPUNIT_ASSERT_EQUAL( n, (int)list.size() );
     }
+#endif
 }
 
 ////////////////////////////////////////////////////////////////////////////////

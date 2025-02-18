@@ -41,6 +41,8 @@ const std::string HexStringParser::FLOAT_TYPE_SUFFIX =
     "[fFdD]?";
 const std::string HexStringParser::HEX_PATTERN =
     "[\\x00-\\x20]*([+-]?)" + HEX_SIGNIFICANT + BINARY_EXPONENT + FLOAT_TYPE_SUFFIX + "[\\x00-\\x20]*";
+const unsigned long long ALLONESLONG = static_cast<unsigned long long>(-1L);
+const unsigned int ALLONES = static_cast<unsigned int>(-1);
 
 ////////////////////////////////////////////////////////////////////////////////
 HexStringParser::HexStringParser(int exponentWidth, int mantissaWidth) : EXPONENT_WIDTH(exponentWidth),
@@ -53,10 +55,10 @@ HexStringParser::HexStringParser(int exponentWidth, int mantissaWidth) : EXPONEN
                                                                          exponent(0),
                                                                          mantissa(0),
                                                                          abandonedNumber() {
-    this->EXPONENT_BASE = ~(-1 << (exponentWidth - 1));
-    this->MAX_EXPONENT = ~(-1 << exponentWidth);
+    this->EXPONENT_BASE = ~(ALLONES << (exponentWidth - 1));
+    this->MAX_EXPONENT = ~(ALLONES << exponentWidth);
     this->MIN_EXPONENT = -(MANTISSA_WIDTH + 1);
-    this->MANTISSA_MASK = ~(-1 << mantissaWidth);
+    this->MANTISSA_MASK = ~(ALLONES << mantissaWidth);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -232,7 +234,7 @@ void HexStringParser::fitMantissaInDesiredWidth(int desiredWidth) {
 
 ////////////////////////////////////////////////////////////////////////////////
 void HexStringParser::discardTrailingBits(long long num) {
-    long long mask = ~(-1L << num);
+    long long mask = ~(ALLONESLONG << num);
     abandonedNumber += (char) (mantissa & mask);
     mantissa >>= num;
 }

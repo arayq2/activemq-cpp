@@ -106,10 +106,10 @@ void AdvisoryTest::testTempDestinationCompositeAdvisoryTopic() {
     CPPUNIT_ASSERT(advisory1.get() != NULL);
     std::unique_ptr<cms::Message> advisory2(consumer->receive(2000));
     CPPUNIT_ASSERT(advisory2.get() != NULL);
-
+#if 0 // unused variables, avoid compiler warning
     ActiveMQMessage* tempTopicAdvisory = dynamic_cast<ActiveMQMessage*>(advisory1.get());
     ActiveMQMessage* tempQueueAdvisory = dynamic_cast<ActiveMQMessage*>(advisory2.get());
-
+#endif
     // Create one of each
     std::unique_ptr<Topic> topic(session->createTopic(UUID::randomUUID().toString()));
     std::unique_ptr<Queue> queue(session->createQueue(UUID::randomUUID().toString()));

@@ -56,7 +56,7 @@ void LongArrayBufferTest::testArray() {
     long long* array = testBuffer1->array();
 
     testBuffer1->put( 0, 10 );
-    CPPUNIT_ASSERT( array[0] == 10.0 );
+    CPPUNIT_ASSERT( array[0] == 10L );
 
     assertContentEquals(
         testBuffer1, array, testBuffer1->arrayOffset(), testBuffer1->capacity() );

@@ -30,13 +30,7 @@ RuntimeException::~RuntimeException() throw () {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-RuntimeException::RuntimeException(const Exception& ex) : Exception() {
-    *(Exception*) this = ex;
-}
-
-////////////////////////////////////////////////////////////////////////////////
-RuntimeException::RuntimeException(const RuntimeException& ex) : Exception() {
-    *(Exception*) this = ex;
+RuntimeException::RuntimeException(const Exception& ex) : Exception(ex) {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -63,4 +57,11 @@ RuntimeException::RuntimeException(const char* file, const int lineNumber, const
 
     // Set the first mark for this exception.
     setMark(file, lineNumber);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+RuntimeException& RuntimeException::operator=(const Exception& ex) {
+    RuntimeException  tmp(ex);
+    std::swap(*this, tmp);
+    return *this;
 }

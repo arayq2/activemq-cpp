@@ -1077,8 +1077,8 @@ namespace locks {
             return Atomics::compareAndSet32(&node->waitStatus, expect, update);
         }
         static bool compareAndSetNext(Node* node, Node* expect, Node* update) {
-            return Atomics::compareAndSet((volatile void **)(&node->next), (void*)expect, (void*)update);
-        }
+            return Atomics::compareAndSwap<Node>(node->next, expect, update);
+            }
     };
 
     /**

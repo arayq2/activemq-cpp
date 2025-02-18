@@ -513,6 +513,7 @@ int OpenSSLSocket::read(unsigned char* buffer, int size, int offset, int length)
                 this->shutdownInput();
                 return -1;
             }
+            /* falls through */
         default:
             throw OpenSSLSocketException(__FILE__, __LINE__);
         }
@@ -664,7 +665,7 @@ void OpenSSLSocket::verifyServerCert(const std::string& serverName) {
             }
 
             bool found = false;
-            const unsigned char* data = ASN1_STRING_data(X509_EXTENSION_get_data(extension));
+            const unsigned char* data = ASN1_STRING_get0_data(X509_EXTENSION_get_data(extension));
             long length = ASN1_STRING_length(X509_EXTENSION_get_data(extension));
             void* ext_data;
 
@@ -709,7 +710,7 @@ void OpenSSLSocket::verifyServerCert(const std::string& serverName) {
                break;
            }
            entry = X509_NAME_get_entry(subject, lastpos);
-           const char * entryText = (const char *) ASN1_STRING_data(X509_NAME_ENTRY_get_data(entry));
+           const char * entryText = (const char *) ASN1_STRING_get0_data(X509_NAME_ENTRY_get_data(entry));
             if (StringUtils::compare(entryText , serverName.c_str()) == 0) {
                 return;
             }

@@ -33,14 +33,6 @@ Buffer::Buffer( int capacity ) : _position(0),
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-Buffer::Buffer( const Buffer& other ) : _position(other._position),
-                                        _capacity(other._capacity),
-                                        _limit(other._limit),
-                                        _mark(other._mark),
-                                        _markSet(other._markSet) {
-}
-
-////////////////////////////////////////////////////////////////////////////////
 Buffer& Buffer::position( int newPosition ) {
 
     if( newPosition < 0 || newPosition > this->_limit ) {

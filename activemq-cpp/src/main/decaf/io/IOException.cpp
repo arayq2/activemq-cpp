@@ -30,14 +30,14 @@ IOException::~IOException() throw () {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-IOException::IOException(const Exception& ex) : Exception() {
-    *(Exception*) this = ex;
+IOException::IOException(const Exception& ex) : Exception(ex) {
+    // *(Exception*) this = ex;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-IOException::IOException(const IOException& ex) : Exception() {
-    *(Exception*) this = ex;
-}
+//IOException::IOException(const IOException& ex) : Exception() {
+//    *(Exception*) this = ex;
+//}
 
 ////////////////////////////////////////////////////////////////////////////////
 IOException::IOException(const std::exception* cause) : Exception(cause) {
