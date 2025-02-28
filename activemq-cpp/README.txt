@@ -43,6 +43,16 @@ On Debian/Ubuntu, type the following:
 Make sure that the paths to the installed CppUnit library and includes are
 visible in your current shell before you try building the tests.
 
+New installations will face the problem that the 'cppunit-config' program, 
+on which the activemq-cpp build system depends for configuration, is obsolete 
+and has been dropped from the cppunit suite.  One workaround is to create a 
+shell script with the same name. Install this in a 'bin' directory somewhere 
+(for example, /usr/local/bin) and enable the --with-cppunit-exec=/usr/local 
+option for the 'configure' script of the build. The workaround script should 
+return the values in the 'cppunit.pc' configuration file of the cppunit 
+package. (On Debian/Ubuntu systems, that use the standard 'pkg-config' 
+program, this .pc file should be in a 'pkgconfig' directory under /usr/lib.) 
+
 Windows users will need to build the CppUnit library using the CPPUnit
 MSVC project files. A discussion of the build process can be found
 on the CPPUnit wiki under:
@@ -133,6 +143,13 @@ using /usr/sbin/update-alternatives.
     |                                                                     |
     | sudo apt-get install build-essential                                |
     -----------------------------------------------------------------------
+
+We highly recommend building in a directory separate from the source files. 
+The autotools suite supports this. An (initially empty) 'build' directory 
+parallel to the 'src' directory should be used for this purpose.  The easiest 
+way to enable this is to edit the build.conf file before running build.sh, 
+which will create an appropriate configure script and run it.  Then, simply 
+'cd build' before running make or the tests.
 
 2 Building on Unix/Linux/OS X
 --------------------------------------------------------------------------
@@ -225,7 +242,7 @@ tcp://localhost:61613 for Stomp and tcp://localhost:61616 for Openwire.
 The integration tests are built via "make check".  To run them, first
 start a broker and then
 
-  ./sr/test-integration/activemq-test-integration
+  ./src/test-integration/activemq-test-integration
 
 This will take quite some time to complete, so be patient.  It is recommended
 that you restart the broker between successive runs of the integration tests.
