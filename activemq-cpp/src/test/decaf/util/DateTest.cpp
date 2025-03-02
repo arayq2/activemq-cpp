@@ -19,6 +19,7 @@
 
 #include <decaf/util/Date.h>
 #include <decaf/lang/Thread.h>
+#include <stdlib.h>
 
 using namespace std;
 using namespace decaf;
@@ -59,8 +60,9 @@ void DateTest::test() {
 ////////////////////////////////////////////////////////////////////////////////
 void DateTest::testToString() {
 
+    setenv("TZ", "EST", 1);
     Date now(1443038174960LL);
     CPPUNIT_ASSERT(now.toString() != "");
     CPPUNIT_ASSERT(now.toString().size() >= 20);
-    CPPUNIT_ASSERT_EQUAL(std::string("Wed Sep 23 15:56:14 EDT 2015"), now.toString());
+    CPPUNIT_ASSERT_EQUAL(std::string("Wed Sep 23 14:56:14 EST 2015"), now.toString());
 }
