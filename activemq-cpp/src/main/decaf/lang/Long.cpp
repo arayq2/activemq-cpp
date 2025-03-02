@@ -19,6 +19,12 @@
 #include <decaf/lang/Character.h>
 #include <sstream>
 
+// OPT-NOTE
+// Disable optimization for this code.  When enabled, the overflow check fails to work correctly
+//  when parsing strings into longs.
+#pragma GCC push_options
+#pragma GCC optimize("O0")
+
 using namespace decaf;
 using namespace decaf::lang;
 
@@ -210,6 +216,8 @@ long long Long::parse(const String& value, int offset, int radix, bool negative)
                 "Long::parseLong - String contains no digit characters.");
         }
 
+        // OPT-NOTE
+        // This is the test that ends up failing when optimization is enabled.
         if (max > result) {
             throw exceptions::NumberFormatException(__FILE__, __LINE__,
                 "Long::parseLong - Parsed value greater than max for radix.");
@@ -465,3 +473,5 @@ Long Long::valueOf(const String& value) {
 Long Long::valueOf(const String& value, int radix) {
     return Long(Long::parseLong(value, radix));
 }
+
+#pragma GCC pop_options
