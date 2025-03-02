@@ -68,6 +68,9 @@ AC_ARG_WITH(cppunit-exec,[  --with-cppunit-exec=PFX Exec prefix where CppUnit is
     fi
 
   else
+    CPPUNIT_CFLAGS=`$CPPUNIT_CONFIG --cflags`
+    CPPUNIT_LIBS=`$CPPUNIT_CONFIG --libs`
+    cppunit_version=`$CPPUNIT_CONFIG --version`
     HAVE_CPPUNIT_CONFIG="yes"
   fi
 
