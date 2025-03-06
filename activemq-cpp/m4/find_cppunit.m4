@@ -45,13 +45,36 @@ AC_ARG_WITH(cppunit-exec,[  --with-cppunit-exec=PFX Exec prefix where CppUnit is
   AC_MSG_CHECKING(for Cppunit - version >= $cppunit_version_min)
   no_cppunit=""
   if test "$CPPUNIT_CONFIG" = "no" ; then
-    AC_MSG_RESULT(no)
-    no_cppunit=yes
+
+    dnl
+    dnl TRY pkg-config for more modern systems
+    dnl
+
+    PKG_CONFIG=pkg-config
+    AC_PATH_PROG(PKG_CONFIG, pkg-config, no)
+
+    if test "$PKG_CONFIG" = "no" ; then
+
+      AC_MSG_RESULT(no)
+      no_cppunit=yes
+
+    else
+
+      CPPUNIT_CFLAGS=`$PKG_CONFIG --cflags cppunit`
+      CPPUNIT_LIBS=`$PKG_CONFIG --libs cppunit`
+      cppunit_version=`$PKG_CONFIG --modversion cppunit`
+      HAVE_CPPUNIT_CONFIG="yes"
+
+    fi
+
   else
     CPPUNIT_CFLAGS=`$CPPUNIT_CONFIG --cflags`
     CPPUNIT_LIBS=`$CPPUNIT_CONFIG --libs`
     cppunit_version=`$CPPUNIT_CONFIG --version`
+    HAVE_CPPUNIT_CONFIG="yes"
+  fi
 
+  if test "$HAVE_CPPUNIT_CONFIG" = "yes" ; then
     cppunit_major_version=`echo $cppunit_version | \
            sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\1/'`
     cppunit_minor_version=`echo $cppunit_version | \

@@ -224,7 +224,7 @@ case "${host_os}" in
 esac
 
 if test "$GCC" = "yes"; then
-   PLAT_CXXFLAGS="-ansi -pedantic"
+   PLAT_CXXFLAGS=""
 fi
 
 ## find and configure the Apache Decaf Library

@@ -123,6 +123,7 @@ namespace util {
         }
 
         /**
+         * Copy constructor.
          * Constructs a new set containing the elements in the specified HashSet.
          *
          * The HashMap is created with default load factor (0.75) and an initial capacity
@@ -131,7 +132,7 @@ namespace util {
          * @param collection
          *      The collection of elements to add to this HashSet.
          */
-        HashSet(const HashSet<E>& collection) : AbstractCollection<E>(), AbstractSet<E>(), backingMap() {
+        HashSet(const HashSet& collection) : AbstractSet<E>(), backingMap() {
 
             this->backingMap = new HashMap<E, Set<E>*, HASHCODE>(
                 (collection.size() < 6 ? 11 : collection.size() * 2));
@@ -142,6 +143,35 @@ namespace util {
             }
         }
 
+        /**
+         * Copy assignment operator (required by Rule of Three).
+         *
+         * The HashMap is created with default load factor (0.75) and an initial capacity
+         * sufficient to contain the elements in the specified collection.
+         *
+         * @param collection
+         *      The collection of elements to add to this HashSet.
+         */
+        HashSet& operator =(const HashSet& collection) {
+            HashSet  tmp(collection);
+            std::swap(this->backingMap, tmp.backingMap);
+            return *this;
+        }
+
+        /**
+         * Move semantics: move constructor.
+         */
+        HashSet(HashSet&& collection) : AbstractSet<E>(), backingMap(std::move(collection.backingMap)) {
+        }
+
+        /**
+         * Move semantics: move assignment operator.
+         */
+        HashSet& operator =(HashSet&& collection) {
+            std::swap(this->backingMap, collection.backingMap);
+            return *this;
+        }
+        
         virtual ~HashSet() {
             try {
                 delete this->backingMap;

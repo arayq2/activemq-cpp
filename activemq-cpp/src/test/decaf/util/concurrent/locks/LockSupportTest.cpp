@@ -225,7 +225,7 @@ void LockSupportTest::testPark4() {
         lock.unlock();
         t.join();
     }
-    catch(Exception e) {
+    catch(Exception& e) {
         unexpectedException();
     }
 }

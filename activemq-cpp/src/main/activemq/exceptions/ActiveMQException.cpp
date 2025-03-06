@@ -91,3 +91,12 @@ cms::CMSException ActiveMQException::convertToCMSException() const {
 
     return cms::CMSException(this->getMessage(), result, this->getStackTrace());
 }
+
+////////////////////////////////////////////////////////////////////////////////
+ActiveMQException& ActiveMQException::operator=(const ActiveMQException& ex) {
+    ActiveMQException  tmp(ex);
+    std::swap(*this, tmp);
+    return *this;
+} 
+
+

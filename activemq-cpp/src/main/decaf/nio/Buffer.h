@@ -133,8 +133,11 @@ namespace nio {
 
     public:
 
-        Buffer(int capactiy);
-        Buffer(const Buffer& other);
+        Buffer(int capacity);
+        Buffer(const Buffer& other) = default;
+        Buffer& operator=(const Buffer& other) = default;
+        Buffer(Buffer&& other) = default;
+        Buffer& operator=(Buffer&& other) = default;
         virtual ~Buffer() {}
 
     public:

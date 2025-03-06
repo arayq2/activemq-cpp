@@ -59,7 +59,7 @@ namespace {
         CPPUNIT_ASSERT( !list.isEmpty());
         CPPUNIT_ASSERT_EQUAL( n, list.size() );
     }
-
+#if 0 // unused functions, avoid compiler warning
     void populate( LinkedBlockingQueue<std::string>& queue, int n ) {
 
         CPPUNIT_ASSERT( queue.isEmpty() );
@@ -79,10 +79,10 @@ namespace {
         for( int i = 0; i < n; ++i ) {
             list.push_back( i );
         }
-
         CPPUNIT_ASSERT( !list.empty());
         CPPUNIT_ASSERT_EQUAL( n, (int)list.size() );
     }
+#endif
 }
 
 ///////////////////////////////////////////////////////////////////////////////

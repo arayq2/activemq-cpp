@@ -200,7 +200,7 @@ void TimerTest::setUp() {
 ////////////////////////////////////////////////////////////////////////////////
 void TimerTest::testConstructor() {
 
-    std::auto_ptr<Timer> t;
+    std::unique_ptr<Timer> t;
     TimerTaskReport report;
 
     // Ensure a task is run
@@ -224,7 +224,7 @@ void TimerTest::testConstructor() {
 ////////////////////////////////////////////////////////////////////////////////
 void TimerTest::testCancel() {
 
-    std::auto_ptr<Timer> t;
+    std::unique_ptr<Timer> t;
     TimerTaskReport report;
 
     // Ensure a task throws an IllegalStateException after cancelled
@@ -324,7 +324,7 @@ void TimerTest::testCancel() {
 ////////////////////////////////////////////////////////////////////////////////
 void TimerTest::testPurge() {
 
-    std::auto_ptr<Timer> t;
+    std::unique_ptr<Timer> t;
 
     t.reset( new Timer() );
     CPPUNIT_ASSERT( 0 == t->purge() );
@@ -353,7 +353,7 @@ void TimerTest::testPurge() {
 ////////////////////////////////////////////////////////////////////////////////
 void TimerTest::testSchedule_TimerTask_Date() {
 
-    std::auto_ptr<Timer> t;
+    std::unique_ptr<Timer> t;
     TimerTaskReport report;
 
     // Ensure a Timer throws an IllegalStateException after cancelled
@@ -478,7 +478,7 @@ void TimerTest::testSchedule_TimerTask_Date() {
 ////////////////////////////////////////////////////////////////////////////////
 void TimerTest::testSchedule_TimerTask_Date2() {
 
-    std::auto_ptr<Timer> t;
+    std::unique_ptr<Timer> t;
     TimerTaskReport report;
 
     // Ensure a Timer throws an IllegalStateException after cancelled
@@ -597,7 +597,7 @@ void TimerTest::testSchedule_TimerTask_Date2() {
 ////////////////////////////////////////////////////////////////////////////////
 void TimerTest::testSchedule_TimerTask_Long() {
 
-    std::auto_ptr<Timer> t;
+    std::unique_ptr<Timer> t;
     TimerTaskReport report;
 
     // Ensure a Timer throws an IllegalStateException after cancelled
@@ -637,7 +637,7 @@ void TimerTest::testSchedule_TimerTask_Long() {
     exception = false;
     try {
         t->schedule( testTask, -100 );
-    } catch( IllegalArgumentException e ) {
+    } catch( IllegalArgumentException& e ) {
         exception = true;
         // unscheduled tasks must be deleted
         delete testTask;
@@ -651,7 +651,7 @@ void TimerTest::testSchedule_TimerTask_Long() {
     exception = false;
     try {
         t->schedule( NULL, 10 );
-    } catch( NullPointerException e ) {
+    } catch( NullPointerException& e ) {
         exception = true;
     }
     CPPUNIT_ASSERT_MESSAGE( "Scheduling a null task should throw NullPointerException",
@@ -710,7 +710,7 @@ void TimerTest::testSchedule_TimerTask_Long() {
 ////////////////////////////////////////////////////////////////////////////////
 void TimerTest::testSchedule_TimerTask_Long2() {
 
-    std::auto_ptr<Timer> t;
+    std::unique_ptr<Timer> t;
     TimerTaskReport report;
 
     // Ensure a Timer throws an IllegalStateException after cancelled
@@ -746,7 +746,7 @@ void TimerTest::testSchedule_TimerTask_Long2() {
     exception = false;
     try {
         t->schedule( testTask, -100 );
-    } catch( IllegalArgumentException e ) {
+    } catch( IllegalArgumentException& e ) {
         exception = true;
     }
     CPPUNIT_ASSERT_MESSAGE( "Scheduling a task with negative delay should throw IllegalArgumentException",
@@ -758,7 +758,7 @@ void TimerTest::testSchedule_TimerTask_Long2() {
     exception = false;
     try {
         t->schedule( NULL, 10 );
-    } catch( NullPointerException e ) {
+    } catch( NullPointerException& e ) {
         exception = true;
     }
     CPPUNIT_ASSERT_MESSAGE( "Scheduling a null task should throw NullPointerException",
@@ -817,7 +817,7 @@ void TimerTest::testSchedule_TimerTask_Long2() {
 ////////////////////////////////////////////////////////////////////////////////
 void TimerTest::testSchedule_TimerTask_Long_Long() {
 
-    std::auto_ptr<Timer> t;
+    std::unique_ptr<Timer> t;
     TimerTaskReport report;
 
     // Ensure a Timer throws an IllegalStateException after cancelled
@@ -954,7 +954,7 @@ void TimerTest::testSchedule_TimerTask_Long_Long() {
 ////////////////////////////////////////////////////////////////////////////////
 void TimerTest::testSchedule_TimerTask_Long_Long2() {
 
-    std::auto_ptr<Timer> t;
+    std::unique_ptr<Timer> t;
     TimerTaskReport report;
 
     // Ensure a Timer throws an IllegalStateException after cancelled
@@ -1081,7 +1081,7 @@ void TimerTest::testSchedule_TimerTask_Long_Long2() {
 ////////////////////////////////////////////////////////////////////////////////
 void TimerTest::testSchedule_TimerTask_Date_Long() {
 
-    std::auto_ptr<Timer> t;
+    std::unique_ptr<Timer> t;
     TimerTaskReport report;
 
     // Ensure a Timer throws an IllegalStateException after cancelled
@@ -1216,7 +1216,7 @@ void TimerTest::testSchedule_TimerTask_Date_Long() {
 ////////////////////////////////////////////////////////////////////////////////
 void TimerTest::testSchedule_TimerTask_Date_Long2() {
 
-    std::auto_ptr<Timer> t;
+    std::unique_ptr<Timer> t;
     TimerTaskReport report;
 
     // Ensure a Timer throws an IllegalStateException after cancelled
@@ -1343,7 +1343,7 @@ void TimerTest::testSchedule_TimerTask_Date_Long2() {
 ////////////////////////////////////////////////////////////////////////////////
 void TimerTest::testScheduleAtFixedRate_TimerTask_Long_Long() {
 
-    std::auto_ptr<Timer> t;
+    std::unique_ptr<Timer> t;
     TimerTaskReport report;
 
     // Ensure a Timer throws an IllegalStateException after cancelled
@@ -1424,7 +1424,7 @@ void TimerTest::testScheduleAtFixedRate_TimerTask_Long_Long() {
 ////////////////////////////////////////////////////////////////////////////////
 void TimerTest::testScheduleAtFixedRate_TimerTask_Long_Long2() {
 
-    std::auto_ptr<Timer> t;
+    std::unique_ptr<Timer> t;
     TimerTaskReport report;
 
     // Ensure a Timer throws an IllegalStateException after cancelled
@@ -1499,7 +1499,7 @@ void TimerTest::testScheduleAtFixedRate_TimerTask_Long_Long2() {
 ////////////////////////////////////////////////////////////////////////////////
 void TimerTest::testScheduleAtFixedRate_TimerTask_Date_Long() {
 
-    std::auto_ptr<Timer> t;
+    std::unique_ptr<Timer> t;
     TimerTaskReport report;
 
     // Ensure a Timer throws an IllegalStateException after cancelled
@@ -1611,7 +1611,7 @@ void TimerTest::testScheduleAtFixedRate_TimerTask_Date_Long() {
 ////////////////////////////////////////////////////////////////////////////////
 void TimerTest::testScheduleAtFixedRate_TimerTask_Date_Long2() {
 
-    std::auto_ptr<Timer> t;
+    std::unique_ptr<Timer> t;
     TimerTaskReport report;
 
     // Ensure a Timer throws an IllegalStateException after cancelled

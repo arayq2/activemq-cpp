@@ -36,7 +36,7 @@ using namespace decaf::lang::exceptions;
 namespace {
 
     BitSet eightbs;
-
+#if 0 // unused function, avoid compiler warning
     void printBitset(const BitSet& bs) {
         std::cout << std::endl;
         for (int i = bs.size() - 1; i >= 0; i--) {
@@ -47,7 +47,7 @@ namespace {
             }
         }
     }
-
+#endif
 }
 
 ////////////////////////////////////////////////////////////////////////////////

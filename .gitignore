@@ -11,6 +11,8 @@ target
 .cproject
 .classpath
 .settings
+.vscode/
+.deps/
 eclipse-classes
 build
 dependency-reduced-pom.xml

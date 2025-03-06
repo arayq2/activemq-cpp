@@ -63,8 +63,8 @@ Exception::Exception() : Throwable(), data(new ExceptionData) {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-Exception::Exception(const Exception& ex) : Throwable(), data(new ExceptionData) {
-    *this = ex;
+Exception::Exception(const Exception& ex) : Throwable(), data(new ExceptionData(*ex.data)) {
+    // note: defaulted copy constructor of ExceptionData
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -178,9 +178,8 @@ std::string Exception::getStackTraceString() const {
 
 ////////////////////////////////////////////////////////////////////////////////
 Exception& Exception::operator =(const Exception& ex) {
-    this->data->message = ex.data->message;
-    this->data->stackTrace = ex.data->stackTrace;
-    this->data->cause = ex.data->cause;
+    Exception tmp(ex);
+    std::swap(this->data, tmp.data);
     return *this;
 }
 

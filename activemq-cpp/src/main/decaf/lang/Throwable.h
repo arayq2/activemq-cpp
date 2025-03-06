@@ -46,7 +46,7 @@ namespace lang{
 
         Throwable();
 
-        virtual ~Throwable() throw();
+        virtual ~Throwable() noexcept = default;
 
         /**
          * Gets the cause of the error, if no message was provided to the instance

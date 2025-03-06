@@ -52,7 +52,16 @@ namespace exceptions {
          * @param ex
          *      The Exception whose data is to be copied into this one.
          */
-        RuntimeException(const RuntimeException& ex);
+        RuntimeException(const RuntimeException& ex) = default;
+
+        /**
+         * Copy Assignment operator (required by Rule of Three)
+         *
+         * @param ex
+         *      The Exception whose data is to be copied into this one.
+         */
+        RuntimeException& operator=(const RuntimeException& ex) = default;
+        RuntimeException& operator=(const Exception& ex);
 
         /**
          * Constructor - Initializes the file name and line number where

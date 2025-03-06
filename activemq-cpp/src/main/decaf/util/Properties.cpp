@@ -417,7 +417,7 @@ void Properties::load(decaf::io::InputStream* stream) {
                             mode = PARSE_MODE_IGNORE; // Ignore whitespace on the next line
                             continue;
                         }
-                        // Intentional fall into the next case
+                        /* falls through */
                     case '\r':
                         mode = PARSE_MODE_NONE;
                         firstChar = true;

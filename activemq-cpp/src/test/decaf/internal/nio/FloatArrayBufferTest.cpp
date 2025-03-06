@@ -592,7 +592,7 @@ void FloatArrayBufferTest::testPutIndexed() {
     for( int i = 0; i < testBuffer1->capacity(); i++ ) {
         CPPUNIT_ASSERT( testBuffer1->position() == 0 );
         FloatBuffer& ret = testBuffer1->put(i, (float)i );
-        CPPUNIT_ASSERT( testBuffer1->get(i) == i );
+        CPPUNIT_ASSERT( testBuffer1->get(i) == (float)i ); // dubious test
         CPPUNIT_ASSERT( &ret == testBuffer1 );
     }
 

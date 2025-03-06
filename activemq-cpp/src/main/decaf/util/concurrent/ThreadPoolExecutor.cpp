@@ -1341,7 +1341,7 @@ namespace concurrent{
     const int ExecutorKernel::CAPACITY   = (1 << COUNT_BITS) - 1;
 
     // runState is stored in the high-order bits
-    const int ExecutorKernel::RUNNING    = -1 << ExecutorKernel::COUNT_BITS;
+    const int ExecutorKernel::RUNNING    = static_cast<unsigned int>(-1) << ExecutorKernel::COUNT_BITS;
     const int ExecutorKernel::SHUTDOWN   =  0 << ExecutorKernel::COUNT_BITS;
     const int ExecutorKernel::STOP       =  1 << ExecutorKernel::COUNT_BITS;
     const int ExecutorKernel::TIDYING    =  2 << ExecutorKernel::COUNT_BITS;

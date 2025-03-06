@@ -43,7 +43,7 @@ namespace {
         CPPUNIT_ASSERT( !list.isEmpty());
         CPPUNIT_ASSERT_EQUAL( n, list.size() );
     }
-
+#if 0 // unused functions, avoid compiler warning
     void populate( LinkedList<std::string>& list, int n ) {
 
         CPPUNIT_ASSERT( list.isEmpty() );
@@ -67,6 +67,7 @@ namespace {
         CPPUNIT_ASSERT( !list.empty());
         CPPUNIT_ASSERT_EQUAL( n, (int)list.size() );
     }
+#endif
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -939,7 +940,7 @@ void LinkedListTest::testListIterator1IndexOutOfBoundsException() {
 
     CPPUNIT_ASSERT_THROW_MESSAGE(
         "Should throw an IndexOutOfBoundsException",
-        std::auto_ptr< ListIterator<std::string> > it( list.listIterator( -1 ) ),
+        std::unique_ptr< ListIterator<std::string> > it( list.listIterator( -1 ) ),
         IndexOutOfBoundsException );
 }
 
@@ -952,7 +953,7 @@ void LinkedListTest::testListIterator2IndexOutOfBoundsException() {
 
     CPPUNIT_ASSERT_THROW_MESSAGE(
         "Should throw an IndexOutOfBoundsException",
-        std::auto_ptr< ListIterator<std::string> > it( list.listIterator( 100 ) ),
+        std::unique_ptr< ListIterator<std::string> > it( list.listIterator( 100 ) ),
         IndexOutOfBoundsException );
 }
 
@@ -962,7 +963,7 @@ void LinkedListTest::testIterator1() {
     LinkedList<int> list;
     populate( list, SIZE );
 
-    std::auto_ptr< Iterator<int> > iter( list.iterator() );
+    std::unique_ptr< Iterator<int> > iter( list.iterator() );
 
     CPPUNIT_ASSERT( iter->hasNext() );
 
@@ -985,7 +986,7 @@ void LinkedListTest::testIterator2() {
     list.add( "fred2" );
     list.add( "fred3" );
 
-    std::auto_ptr< Iterator<std::string> > iterator1( list.iterator() );
+    std::unique_ptr< Iterator<std::string> > iterator1( list.iterator() );
     CPPUNIT_ASSERT( iterator1.get() != NULL );
     CPPUNIT_ASSERT( iterator1->hasNext() == true );
 
@@ -997,7 +998,7 @@ void LinkedListTest::testIterator2() {
 
     CPPUNIT_ASSERT( count == list.size() );
 
-    std::auto_ptr< Iterator<std::string> > iterator2( list.iterator() );
+    std::unique_ptr< Iterator<std::string> > iterator2( list.iterator() );
 
     while( iterator2->hasNext() ) {
         iterator2->next();
@@ -1013,7 +1014,7 @@ void LinkedListTest::testListIterator1() {
     LinkedList<int> list;
     populate( list, SIZE );
 
-    std::auto_ptr< ListIterator<int> > iter( list.listIterator() );
+    std::unique_ptr< ListIterator<int> > iter( list.listIterator() );
 
     int index = 0;
     while( iter->hasNext() ) {
@@ -1066,7 +1067,7 @@ void LinkedListTest::testListIterator2() {
     list.add(1);
     list.add(2);
 
-    std::auto_ptr< ListIterator<int> > iter( list.listIterator() );
+    std::unique_ptr< ListIterator<int> > iter( list.listIterator() );
 
     while( iter->hasNext() ) {
         iter->next();
@@ -1114,7 +1115,7 @@ void LinkedListTest::testListIterator2() {
 void LinkedListTest::testListIterator3() {
 
     LinkedList<int> list;
-    std::auto_ptr< ListIterator<int> > iter( list.listIterator() );
+    std::unique_ptr< ListIterator<int> > iter( list.listIterator() );
     CPPUNIT_ASSERT_EQUAL( -1, iter->previousIndex() );
 
     CPPUNIT_ASSERT_THROW_MESSAGE(
@@ -1141,7 +1142,7 @@ void LinkedListTest::testListIterator3() {
 void LinkedListTest::testListIterator4() {
 
     LinkedList<int> list;
-    std::auto_ptr< ListIterator<int> > iter( list.listIterator( 0 ) );
+    std::unique_ptr< ListIterator<int> > iter( list.listIterator( 0 ) );
     CPPUNIT_ASSERT_EQUAL( 0, iter->nextIndex() );
     CPPUNIT_ASSERT_EQUAL( -1, iter->previousIndex() );
 
@@ -1163,7 +1164,7 @@ void LinkedListTest::testListIterator4() {
 void LinkedListTest::testDescendingIterator() {
 
     LinkedList<int> list;
-    std::auto_ptr< Iterator<int> > iter( list.descendingIterator() );
+    std::unique_ptr< Iterator<int> > iter( list.descendingIterator() );
 
     CPPUNIT_ASSERT( !iter->hasNext() );
 
@@ -1206,7 +1207,7 @@ void LinkedListTest::testDescendingIterator() {
 void LinkedListTest::testRemoveFirstOccurrence() {
 
     LinkedList<int> list;
-    std::auto_ptr< Iterator<int> > iter( list.descendingIterator() );
+    std::unique_ptr< Iterator<int> > iter( list.descendingIterator() );
 
     CPPUNIT_ASSERT( list.offerLast(1) );
     CPPUNIT_ASSERT( list.offerLast(2) );
@@ -1234,7 +1235,7 @@ void LinkedListTest::testRemoveFirstOccurrence() {
 void LinkedListTest::testRemoveLastOccurrence() {
 
     LinkedList<int> list;
-    std::auto_ptr< Iterator<int> > iter( list.descendingIterator() );
+    std::unique_ptr< Iterator<int> > iter( list.descendingIterator() );
 
     CPPUNIT_ASSERT( list.offerLast(1) );
     CPPUNIT_ASSERT( list.offerLast(2) );

@@ -31,7 +31,7 @@ using namespace cmstemplate;
 
 ////////////////////////////////////////////////////////////////////////////////
 Sender::Sender(const string& url, const string& queueOrTopicName, bool isTopic, bool isDeliveryPersistent, int timeToLive) :
-    cmsTemplateMutex(), cmsTemplate(NULL) {
+    cmsTemplateMutex(), cmsTemplate() {
 
     ConnectionFactory* connectionFactory = ConnectionFactoryMgr::getConnectionFactory(url);
 

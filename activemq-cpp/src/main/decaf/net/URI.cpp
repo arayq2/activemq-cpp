@@ -45,8 +45,8 @@ URI::URI() : uri(), uriString() {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-URI::URI(const URI& uri) : uri(uri.uri), uriString(uri.uriString) {
-}
+//URI::URI(const URI& uri) : uri(uri.uri), uriString(uri.uriString) {
+//}
 
 ////////////////////////////////////////////////////////////////////////////////
 URI::URI(const std::string& uri) : uri(), uriString(uri) {

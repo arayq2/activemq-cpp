@@ -41,13 +41,13 @@ void DataInputStreamTest::testConstructor() {
         os->writeChar('t');
         os->close();
         openDataInputStream();
-    } catch (IOException e) {
+    } catch (IOException& e) {
         CPPUNIT_FAIL("IOException during constructor test : " + e.getMessage());
     }
 
     try {
         is->close();
-    } catch (IOException e) {
+    } catch (IOException& e) {
         CPPUNIT_FAIL("IOException during constructor test : " + e.getMessage());
     }
 }

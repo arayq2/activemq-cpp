@@ -1,0 +1,23 @@
+#!/bin/bash -e
+
+## custom cppunit-config for old m4 programs
+## that should be changed to use pkg-config instead.
+## Edit this for your version of cppunit installed.
+## E.g., from /usr/lib/x86_64-linux-gnu/pkgconfig/cppunit.pc.
+## Copy this to a suitable bin/ directory, name it exactly
+## 'cppunit-config', and chmod +x on it.
+ 
+case "$1" in
+    --version)    
+        echo "1.15.1"
+        ;;
+    --cflags)
+        echo
+        ;;
+    --libs)
+        echo "-L/usr/lib/x86_64-linux-gnu -lcppunit "
+        ;;
+    *)
+        exit 1
+esac
+exit 0

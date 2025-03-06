@@ -36,24 +36,25 @@ using namespace decaf::lang::exceptions;
 namespace {
 
     const int MAP_SIZE = 1000;
-
+#if 0 // unused function, avoid compiler warning
     void populateMap(StlMap<int, std::string>& map) {
         for (int i = 0; i < MAP_SIZE; ++i) {
             map.put(i, Integer::toString(i));
         }
     }
-
+#endif
     void populateMap(ConcurrentStlMap<int, std::string>& map) {
         for (int i = 0; i < MAP_SIZE; ++i) {
             map.put(i, Integer::toString(i));
         }
     }
-
+#if 0 // unused function, avoid compiler warning
     void populateMap(HashMap<int, std::string>& map) {
         for (int i = 0; i < MAP_SIZE; ++i) {
             map.put(i, Integer::toString(i));
         }
     }
+#endif
 }
 
 ////////////////////////////////////////////////////////////////////////////////

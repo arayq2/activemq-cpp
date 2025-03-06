@@ -108,7 +108,15 @@ namespace exceptions {
          */
         virtual cms::CMSException convertToCMSException() const;
 
-   };
+        /**
+         * Copy Assignment Operator (required by Rule of Three)
+         *
+         * @param ex
+         *      The Exception whose internal data is copied into this instance.
+         */
+        ActiveMQException& operator=(const ActiveMQException& ex); 
+
+    };
 
 }}
 

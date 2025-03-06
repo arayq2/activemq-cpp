@@ -19,6 +19,7 @@
 
 #include <decaf/net/ssl/SSLSocketFactory.h>
 #include <decaf/io/IOException.h>
+#include <decaf/net/Socket.h>
 
 using namespace decaf;
 using namespace decaf::io;
@@ -42,8 +43,8 @@ void SSLSocketFactoryTest::testGetDefault() {
 
 #ifdef HAVE_OPENSSL
 
-    std::auto_ptr<Socket> sock( factory->createSocket() );
-    CPPUNIT_ASSERT( sock.get() != NULL );
+    std::unique_ptr<Socket> sock( factory->createSocket() );
+    CPPUNIT_ASSERT( sock.get() != nullptr );
 
 #else
 
